@@ -2,11 +2,10 @@ FROM amazon/aws-cli:latest
 ARG PYTHON_VERSION=3.9.10
 ENV PYTHON_VERSION=${PYTHON_VERSION}
 RUN aws --version %% \
-    yum install -y bash curl jq git file tar hub && \
+    yum update && \
+    yum install -y bash curl jq git file tar hub gcc glibc glibc-common gd gd-devel make openssl-devel bzip2-devel libffi-devel && \
     yum clean all
 
-RUN yum -y groupinstall "Development Tools"
-RUN yum -y install openssl-devel bzip2-devel libffi-devel
 RUN curl https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz -o /tmp/Python-$PYTHON_VERSION.tgz
 WORKDIR /tmp
 RUN tar -zxvf /tmp/Python-$PYTHON_VERSION.tgz \
