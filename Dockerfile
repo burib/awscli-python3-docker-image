@@ -22,4 +22,5 @@ RUN ./configure --enable-optimizations \
 RUN update-alternatives --verbose --install /usr/bin/python python /usr/bin/$PYTHON_VERSION 1
 RUN update-alternatives --verbose --install /usr/bin/pip pip /usr/bin/pip3 1
 
-ENTRYPOINT ["/bin/sh", "-c"]
+SHELL ["/bin/bash"]
+ENTRYPOINT ["/bin/bash", "-c"]

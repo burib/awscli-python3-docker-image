@@ -10,7 +10,8 @@ function build() {
 
 function run() {
   local PYTHON_VERSION=${1:-"3.9.10"}
-  docker run -it "$DOCKER_IMAGE_NAME:$PYTHON_VERSION"
+  local COMMAND=${1:-"aws --version"}
+  docker run "$DOCKER_IMAGE_NAME:$PYTHON_VERSION" "$COMMAND"
 }
 
 "$@"
